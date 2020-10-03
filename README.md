@@ -11,11 +11,11 @@ A -- move left
 
 D -- move right
 
-EQUALS -- increase the ID of block by 1(e.g. stone -> grass_block)
+EQUALS -- increase the ID of block held by player(e.g. stone -> grass_block)
 
-MINUS -- decrease the ID of block by 1(e.g. grass_block -> stone)
+MINUS -- decrease the ID of block held by player(e.g. grass_block -> stone)
 
-left click -- destroy the block
+left click -- destroy the block(i.e. the pointed block will be air)
 
 right click -- replace the block
 
