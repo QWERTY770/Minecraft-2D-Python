@@ -27,3 +27,6 @@ right click -- replace the block
 3. Use command "pip install pygame" (if you have installed pygame, you needn't do that).
 
 4. Run "game_main.py" by Python(3.6 or above).
+
+== Wiki ==
+https://minecraft-2d-python.fandom.com/zh/wiki/Minecraft_2d_python_Wiki
