@@ -58,7 +58,7 @@ class World:
         ], self.li[-1].pos + 16 if self.li != [] else 0
         ))
 
-    def get_block(self, pos: tuple):
+    def getBlock(self, pos: tuple):
         """
         pos: (x,y)
         Return the block in this position.
@@ -74,7 +74,7 @@ class World:
         ch = self.li[quo]
         ch[pos[1] // 16][pos[1] % 16 * 16 + rem] = data
 
-    def get_blocks(self, player_pos: tuple):
+    def getBlocks(self, player_pos: tuple):
         """
         player_pos: (x,y)
         Return blocks around the player.(64*40)
@@ -86,10 +86,10 @@ class World:
                     result.append(0)  # void
                     continue
                 try:
-                    result.append(self.get_block((x, y)))
+                    result.append(self.getBlock((x, y)))
                 except IndexError:
                     self.gene_positive()
                     self.gene_negative()
-                    result.append(self.get_block((x, y)))
+                    result.append(self.getBlock((x, y)))
         # print(len(result))
         return result
