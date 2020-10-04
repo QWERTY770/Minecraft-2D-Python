@@ -6,9 +6,5 @@ def get_block_num():
     return len(BLOCKS)
 
 
-def get_block(data):
-    return BLOCKS[data] if data in BLOCKS else "null"
-
-
 def get_block_image(data):
-    return "block\\image\\" + get_block(data) + ".png"
+    return "block\\image\\" + (BLOCKS[data] if data in BLOCKS else "null") + ".png"
