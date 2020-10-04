@@ -68,7 +68,7 @@ class World:
         ch = self.li[quo]
         return ch[pos[1] // 16][pos[1] % 16 * 16 + rem]
 
-    def set_block(self, pos: tuple, data: int):
+    def setBlock(self, pos: tuple, data: int):
         lm = self.li[0].pos  # leftmost
         quo, rem = (pos[0] - lm) // 16, (pos[0] - lm) % 16
         ch = self.li[quo]

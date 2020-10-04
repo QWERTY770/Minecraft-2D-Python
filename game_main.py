@@ -96,9 +96,9 @@ while True:
                     isLongPressing = not isLongPressing
                     break
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # mouse left click
-            world.set_block(player.getPos(), 0)
+            world.setBlock(player.getPos(), 0)
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:  # mouse right click
-            world.set_block(player.getPos(), block_keys[player.block])
+            world.setBlock(player.getPos(), block_keys[player.block])
         if not isLongPressing and event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 player.Y += 1 if player.Y < 255 else 0
