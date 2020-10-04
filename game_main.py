@@ -71,7 +71,7 @@ while True:
     clock.tick(60)
     pygame.display.update()
     screen.fill(blue)
-    show_world(world.get_blocks(player.get_pos()))
+    show_world(world.get_blocks(player.getPos()))
     buttons()
     if long_press:
         keys_pressed = pygame.key.get_pressed()
@@ -84,9 +84,9 @@ while True:
         elif keys_pressed[pygame.K_d]:  # d
             player.x += 1
         elif keys_pressed[pygame.K_EQUALS]:  # =
-            player.inc_block()
+            player.incBlock()
         elif keys_pressed[pygame.K_MINUS]:  # -
-            player.dec_block()
+            player.decBlock()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
@@ -96,9 +96,9 @@ while True:
                     long_press = not long_press
                     break
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # mouse left click
-            world.set_block(player.get_pos(), 0)
+            world.set_block(player.getPos(), 0)
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:  # mouse right click
-            world.set_block(player.get_pos(), block_keys[player.block])
+            world.set_block(player.getPos(), block_keys[player.block])
         if not long_press and event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 player.y += 1 if player.y < 255 else 0
@@ -109,6 +109,6 @@ while True:
             elif event.key == pygame.K_d:
                 player.x += 1
             elif event.key == pygame.K_EQUALS:
-                player.inc_block()
+                player.incBlock()
             elif event.key == pygame.K_MINUS:
-                player.dec_block()
+                player.decBlock()

@@ -8,7 +8,7 @@ class Chunk:
         self.li = surface_li
         self.pos = pos
 
-    def __getitem__(self, item):
+    def __getItem__(self, item):
         return self.li[item]
 
     def put(self, h, pl, data):

@@ -7,16 +7,16 @@ class Player:
         self.y = y
         self.block = block  # the order of block, not id
 
-    def get_pos(self):
+    def getPos(self):
         return self.x, self.y
 
-    def inc_block(self):
+    def incBlock(self):
         if self.block == bk.get_block_num() - 1:
             self.block = 1
         else:
             self.block += 1
 
-    def dec_block(self):
+    def decBlock(self):
         if self.block == 1:
             self.block = bk.get_block_num() - 1
         else:

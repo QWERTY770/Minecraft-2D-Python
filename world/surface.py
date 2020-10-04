@@ -10,10 +10,10 @@ class Surface:
         """
         self.li = li
 
-    def __getitem__(self, item):
+    def __getItem__(self, item):
         return self.li[item]
 
-    def __setitem__(self, key, value):
+    def __setItem__(self, key, value):
         self.li[key] = value
 
     def __contains__(self, item):
