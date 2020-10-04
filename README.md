@@ -29,4 +29,4 @@ right click -- replace the block
 4. Run "game_main.py" by Python(3.6 or above).
 
 == Wiki ==
-https://minecraft-2d-python.fandom.com/zh/wiki/Minecraft_2d_python_Wiki
+https://minecraft2d.fandom.com/zh/wiki/
