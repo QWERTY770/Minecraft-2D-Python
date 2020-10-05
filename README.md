@@ -19,8 +19,6 @@ Report bugs at [issues](https://github.com/QWERTY770/Minecraft-2D-Python/issues)
 
 - right click -- replace the block
 
-You can set the screen size in [game_main.py](game_main.py).
-
 ## Use Guide
 
 1. Go to [releases](https://github.com/QWERTY770/Minecraft-2D-Python/releases) to download.
