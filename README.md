@@ -31,3 +31,6 @@ Report bugs at [issues](https://github.com/QWERTY770/Minecraft-2D-Python/issues)
 
 ## Wiki
 [简体中文](https://minecraft2d.fandom.com/zh/wiki/)
+
+## Other
+Visit [here](http://afdian.net/@qwerty5238) to support.
