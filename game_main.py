@@ -22,13 +22,13 @@ sm_font = pygame.font.SysFont("simhei", 20)
 font = pygame.font.SysFont("simhei", 30)
 bg_font = pygame.font.SysFont("simhei", 60)
 clock = pygame.time.Clock()
-pygame.display.set_caption("Minecraft 2D Python 0.0.2")
+pygame.display.set_caption("Minecraft 2D Python 0.1-pre1")
 pygame.display.set_icon(pygame.image.load("block\\image\\grass_block.png"))
 long_press = False
 
 block_keys = list(BLOCKS.keys())
 player = Player(0, 64)
-screen = pygame.display.set_mode((1500, 800))
+screen = pygame.display.set_mode((1500, 750))
 world = World([])
 world.gene_negative()
 world.gene_negative()
@@ -39,20 +39,20 @@ world.gene_positive()
 
 def show_world(li):
     r = 0
-    for y in range(50, 1074, 16):
+    for y in range(50, 818, 16):
         for x in range(50, 1074, 16):
             if li[r] == 0:
                 r += 1
                 continue
             screen.blit(pygame.image.load(get_block_image(li[r])), (x, 800 - y))
             r += 1
-    x, y = 562, 238  # the position of player
+    x, y = 562, 302  # the position of player
     pygame.draw.line(screen, green, (x, y), (x, y + 16), 2)
     pygame.draw.line(screen, green, (x, y), (x + 16, y), 2)
     pygame.draw.line(screen, green, (x + 16, y), (x + 16, y + 16), 2)
     pygame.draw.line(screen, green, (x, y + 16), (x + 16, y + 16), 2)
     block_im = pygame.image.load("block\\image\\" + BLOCKS[block_keys[player.block]] + ".png")
-    screen.blit(pygame.transform.scale(block_im, (32, 32)), (1300, 100))
+    screen.blit(pygame.transform.scale(block_im, (50, 50)), (1450, 0))
 
 
 def show(tp, word, color1, color2=None):
@@ -73,6 +73,7 @@ while True:
     screen.fill(blue)
     show_world(world.get_blocks(player.get_pos()))
     buttons()
+    screen.blit(show(font, str(player.get_pos()), white), (0, 0))
     if long_press:
         keys_pressed = pygame.key.get_pressed()
         if keys_pressed[pygame.K_w]:  # w
@@ -87,6 +88,8 @@ while True:
             player.inc_block()
         elif keys_pressed[pygame.K_MINUS]:  # -
             player.dec_block()
+        elif keys_pressed[pygame.K_F12]:
+            world.get_block_debug(player.get_pos())
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
@@ -95,10 +98,10 @@ while True:
                 if 350 < pygame.mouse.get_pos()[1] < 380:
                     long_press = not long_press
                     break
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:  # mouse left click
-            world.set_block(player.get_pos(), 0)
-        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 3:  # mouse right click
-            world.set_block(player.get_pos(), block_keys[player.block])
+            if event.button == 1:  # mouse left click
+                world.set_block(player.get_pos(), 0)
+            if event.button == 3:  # mouse right click
+                world.set_block(player.get_pos(), block_keys[player.block])
         if not long_press and event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 player.y += 1 if player.y < 255 else 0
@@ -112,3 +115,5 @@ while True:
                 player.inc_block()
             elif event.key == pygame.K_MINUS:
                 player.dec_block()
+            elif event.key == pygame.K_F12:
+                world.get_block_debug(player.get_pos())
