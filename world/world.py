@@ -71,12 +71,10 @@ class World:
         pos: (x,y)
         Return the block in this position.
         """
-        lm = self.li[0].pos  # leftmost
-        quo, rem = (pos[0] - lm) // 16, (pos[0] - lm) % 16
+        quo = (pos[0] - self.li[0].pos) // 16
         if quo < 0:
             raise IndexError
-        ch = self.li[quo]
-        return ch[pos[1] // 16][pos[1] % 16 * 16 + rem]
+        return self.li[quo][pos[1] // 16][pos[1] % 16 * 16 + (pos[0] - self.li[0].pos) % 16]
 
     def get_block_debug(self, pos):  # debug
         lm = self.li[0].pos  # leftmost
@@ -88,9 +86,8 @@ class World:
 
     def set_block(self, pos: tuple, data: int):
         lm = self.li[0].pos  # leftmost
-        quo, rem = (pos[0] - lm) // 16, (pos[0] - lm) % 16
-        ch = self.li[quo]
-        ch[pos[1] // 16][pos[1] % 16 * 16 + rem] = data
+        ch = self.li[(pos[0] - lm) // 16]
+        ch[pos[1] // 16][pos[1] % 16 * 16 + (pos[0] - lm) % 16] = data
 
     def get_blocks(self, player_pos: tuple):
         """
@@ -108,11 +105,13 @@ class World:
             self.gene_positive()
             self.gene_positive()
         result = []
+        append = result.append
+        get_block = self.get_block
         for y in range(player_pos[1] - 28, player_pos[1] + 20):
             for x in range(player_pos[0] - 32, player_pos[0] + 32):
                 if y < 0 or y > 255:
-                    result.append(0)  # void
+                    append(0)  # void
                     continue
-                result.append(self.get_block((x, y)))
+                append(get_block((x, y)))
         # print(len(result))
         return result
