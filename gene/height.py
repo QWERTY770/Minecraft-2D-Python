@@ -54,10 +54,6 @@ def get_blocks_1(h):
 
 
 def get_chunk(hli, pos):
-    """
-    len(hli): 16
-    pos
-    """
     a = [get_blocks_1(i) for i in hli]
     result = []
     temp = []

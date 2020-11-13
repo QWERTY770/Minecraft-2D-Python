@@ -1,12 +1,8 @@
 class Surface:
-    def __init__(self, li):
+    def __init__(self, li: list):
         """
-        Create a 16*16*1 surface.
-        li=[data, data, data, ..., data,
-        data, data, data, ..., data,
-        ...
-        data, data, data, ..., data,] button to top
 
+        :param li: 16*16 blocks
         """
         self.li = li
 

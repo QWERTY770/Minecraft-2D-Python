@@ -1,9 +1,9 @@
 class Chunk:
-    def __init__(self, surface_li, pos):
+    def __init__(self, surface_li: list, pos: int):
         """
-        Create a 16*256*1 chunk.
-        li=surface*16 button to top
-        pos:The position of the leftmost block.
+
+        :param surface_li: 16 surfaces (world.surface.Surface object)
+        :param pos: position of the leftmost block
         """
         self.li = surface_li
         self.pos = pos
