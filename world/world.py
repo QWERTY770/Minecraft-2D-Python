@@ -5,13 +5,20 @@ RANDOM = 1
 
 
 class World:
-    def __init__(self, chunk_li):
+    def __init__(self, chunk_li: list):
         """
-        The core of game.
-        chunk_li=[chunk, chunk, ... , chunk](from negative to positive)
+        :param chunk_li: all chunks(world.chunk.Chunk object)
         """
         self.li = chunk_li
         self.hli = []
+
+    def __repr__(self):
+        res = ""
+        for i in self.li:
+            for j in i.li:
+                res += str(j)
+        res = res.replace("][", "]\n[") + "\n" + str(self.li[0].pos) + "\n" + str(self.hli)
+        return res
 
     def gene_negative(self):
         if RANDOM:
@@ -66,11 +73,11 @@ class World:
             )]
             self.hli = self.hli + [64] * 16
 
-    def get_block(self, pos: tuple):
+    def get_block(self, pos: tuple) -> int:
         """
-        pos: (x,y)
-        Return the block in this position.
-        """
+        :param pos: (x, y)
+        :return: block data in <pos>
+        """""
         quo = (pos[0] - self.li[0].pos) // 16
         if quo < 0:
             raise IndexError
@@ -89,10 +96,11 @@ class World:
         ch = self.li[(pos[0] - lm) // 16]
         ch[pos[1] // 16][pos[1] % 16 * 16 + (pos[0] - lm) % 16] = data
 
-    def get_blocks(self, player_pos: tuple):
+    def get_blocks(self, player_pos: tuple) -> list:
         """
-        player_pos: (x,y)
-        Return blocks around the player.(64*48)
+
+        :param player_pos: (x, y)
+        :return: blocks around the player (64*48)
         """
         try:
             self.get_block((player_pos[0] - 32, player_pos[1] - 28))
@@ -113,5 +121,4 @@ class World:
                     append(0)  # void
                     continue
                 append(get_block((x, y)))
-        # print(len(result))
         return result
